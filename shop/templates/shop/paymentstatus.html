@@ -1,0 +1,23 @@
+{% extends 'shop/basic.html' %}
+{% block title%} Payment Status - My Awesome Cart{% endblock %}
+{% block body %}
+<div class="container">
+{{response}}
+  <div class="col my-4">
+    <h2>Payment status regarding your order Id {{response.ORDERID}}</h2>
+    {% if response.RESPCODE == "01" %}
+    <p>Your Paytm Transaction ID is <b>{{ response.TXNID}}</b>, Preserve it for your future response</p>
+    {% else %}
+    {{ response.RESPMSG }}
+    <p>Your Paytm Transaction ID is <b>{{ response.TXNID}}</b>, Preserve it for your future response</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+{% if thank %}
+localStorage.clear();
+{% endif %}
+</script>
+{% endblock %}
