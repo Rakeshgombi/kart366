@@ -1,4 +1,4 @@
-# pip install pycyptodome
+# pip install pycryptodome
 import base64
 import string
 import random
@@ -8,7 +8,7 @@ from Crypto.Cipher import AES
 
 
 IV = "@@@@&&&&####$$$$"
-BLOCK_SIZE = 16
+BLOCK_SIZE = 20
 
 
 def generate_checksum(param_dict, merchant_key, salt=None):
@@ -24,7 +24,7 @@ def generate_checksum(param_dict, merchant_key, salt=None):
     return __encode__(hash_string, IV, merchant_key)
 
 def generate_refund_checksum(param_dict, merchant_key, salt=None):
-    for i in param_dict:    
+    for i in param_dict:
         if("|" in param_dict[i]):
             param_dict = {}
             exit()
